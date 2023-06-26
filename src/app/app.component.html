@@ -1,6 +1,8 @@
-<app-main *ngIf="isUserAdmin() || isUserReception()"></app-main>
+<app-main *ngIf="isUserAdmin()"></app-main>
 
-<app-patient-layout *ngIf="isUserPatient() || isUserDoctor()"></app-patient-layout>
+<app-patient-layout *ngIf="isUserPatient()"></app-patient-layout>
+
+<app-doctor-layout *ngIf="isUserDoctor()"></app-doctor-layout>
 
 
 <router-outlet *ngIf="!this.userService.isLoggedIn()"></router-outlet>
