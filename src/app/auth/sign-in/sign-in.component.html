@@ -6,7 +6,7 @@
   </div>
   <!-- Container for form-->
   <div class="form-con">
-    <form action="" method="">
+    <form [formGroup]="loginform" (ngSubmit)="proceedLogin()">
       <h3>Log in</h3>
       <input
         type="email"
@@ -14,6 +14,8 @@
         placeholder="Username"
         class="box"
         required
+        matInput
+        formControlName="username"
       />
       <input
         type="password"
@@ -21,6 +23,8 @@
         placeholder="Password"
         class="box"
         required
+        matInput
+        formControlName="password"
       />
       <button class="btn">Login</button>
       <p><a href="">Forgot Your Password</a></p>

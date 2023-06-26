@@ -6,24 +6,25 @@
   </div>
   <!-- Container for form-->
   <div class="form-con">
-    <form action="" method="">
+    <form [formGroup]="registerform" (ngSubmit)="proceedRegistration()">
       <h3>Sign up</h3>
-
-      <i class="fa-regular fa-envelope"></i>
       <input
         type="text"
         name="email"
         placeholder="Email"
         class="box"
         required
+        matInput
+        formControlName="email"
       />
-      <i class="fa-solid fa-user"></i>
       <input
         type="text"
         name="firstname"
         placeholder="First Name"
         class="box"
         required
+        matInput
+        formControlName="firstname"
       />
       <input
         type="text"
@@ -31,6 +32,8 @@
         placeholder="Last Name"
         class="box"
         required
+        matInput
+        formControlName="lastname"
       />
       <input
         type="password"
@@ -38,13 +41,14 @@
         placeholder="Password"
         class="box"
         required
+        matInput
+        formControlName="password"
       />
       <input
         type="password"
         name="confirmpassword"
         placeholder="Confirm Password"
         class="box"
-        required
       />
       <button class="btn">Register</button>
       <p>Already Have An Account? <a href="index.html">Login</a></p>
