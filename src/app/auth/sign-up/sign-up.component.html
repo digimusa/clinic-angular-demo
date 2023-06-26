@@ -6,48 +6,18 @@
   </div>
   <!-- Container for form-->
   <div class="form-con">
-    <form action="" method="">
+    <form [formGroup]="signUpForm">
       <h3>Sign up</h3>
 
-      <i class="fa-regular fa-envelope"></i>
-      <input
-        type="text"
-        name="email"
-        placeholder="Email"
-        class="box"
-        required
-      />
-      <i class="fa-solid fa-user"></i>
-      <input
-        type="text"
-        name="firstname"
-        placeholder="First Name"
-        class="box"
-        required
-      />
-      <input
-        type="text"
-        name="lastname"
-        placeholder="Last Name"
-        class="box"
-        required
-      />
-      <input
-        type="password"
-        name="password"
-        placeholder="Password"
-        class="box"
-        required
-      />
-      <input
-        type="password"
-        name="confirmpassword"
-        placeholder="Confirm Password"
-        class="box"
-        required
-      />
-      <button class="btn">Register</button>
-      <p>Already Have An Account? <a href="index.html">Login</a></p>
+      <!-- <i class="fa-regular fa-envelope"></i> -->
+      <input type="text" name="email" formControlName="email" placeholder="Email" class="box" required />
+      <!-- <i class="fa-solid fa-user"></i> -->
+      <input type="text" name="firstName" formControlName="firstName" placeholder="First Name" class="box" required />
+      <input type="text" name="lastName" formControlName="lastName" placeholder="Last Name" class="box" required />
+      <input type="password" name="password" formControlName="password" placeholder="Password" class="box" required />
+      <!-- <input type="password" name="confirmpassword" placeholder="Confirm Password" class="box" required /> -->
+      <button class="btn" (click)="proceedRegistration()">Register</button>
+      <p>Already Have An Account? <a routerLink="/login/login">Login</a></p>
     </form>
   </div>
 </div>
