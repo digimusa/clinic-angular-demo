@@ -68,6 +68,13 @@ const routes: Routes = [
         (m) => m.ViewAppointmentsModule
       ),
   },
+  {
+    path: 'profile-settings',
+    loadChildren: () =>
+      import('./pages/patient/profile-settings/profile-settings.module').then(
+        (m) => m.ProfileSettingsModule
+      ),
+  },
 ];
 
 @NgModule({
