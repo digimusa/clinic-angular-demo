@@ -7,14 +7,14 @@
         <span></span>
       </span>
     </a>
-    <a href="index-2.html" class="navbar-brand logo">
-      <!-- <img src="assets/img/logo.png" class="img-fluid" alt="Logo"> -->
+    <a routerLink="/doctor-dashboard" class="navbar-brand logo">
+      <img src="assets/img/logo.png" class="img-fluid" alt="Logo">
     </a>
   </div>
   <div class="main-menu-wrapper">
     <div class="menu-header">
       <a href="index-2.html" class="menu-logo">
-        <!-- <img src="assets/img/logo.png" class="img-fluid" alt="Logo"> -->
+        <img src="assets/img/logo.png" class="img-fluid" alt="Logo">
       </a>
       <a id="menu_close" class="menu-close" href="javascript:void(0);">
         <i class="fas fa-times"></i>
@@ -34,11 +34,11 @@
 
     <!-- User Menu -->
     <li class="nav-item dropdown has-arrow logged-item">
-      <!-- <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+      <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
         <span class="user-img">
           <img class="rounded-circle" src="assets/img/doctors/doctor-thumb-02.jpg" width="31" alt="Darren Elder">
         </span>
-      </a> -->
+      </a>
       <div class="dropdown-menu dropdown-menu-right">
         <div class="user-header">
           <div class="avatar avatar-sm">
@@ -51,10 +51,33 @@
         </div>
         <a class="dropdown-item" href="doctor-dashboard.html">Dashboard</a>
         <a class="dropdown-item" href="doctor-profile-settings.html">Profile Settings</a>
-        <a class="dropdown-item" (click)="logout()">Logout</a>
+        <a class="dropdown-item" >Logout</a>
       </div>
     </li>
     <!-- /User Menu -->
 
+
   </ul>
+
+
 </nav>
+
+
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb-bar">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-md-12 col-12">
+          <nav aria-label="breadcrumb" class="page-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+            </ol>
+          </nav>
+          <h2 class="breadcrumb-title">Dashboard</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /Breadcrumb -->
