@@ -3,15 +3,21 @@ import { CommonModule } from '@angular/common';
 
 import { AdminPatientRoutingModule } from './admin-patient-routing.module';
 import { AdminPatientComponent } from './admin-patient.component';
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+const UX = [TableModule, ButtonModule, DialogModule];
 
 @NgModule({
-  declarations: [
-    AdminPatientComponent
-  ],
+  declarations: [AdminPatientComponent],
   imports: [
     CommonModule,
-    AdminPatientRoutingModule
-  ]
+    AdminPatientRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ...UX,
+  ],
 })
-export class AdminPatientModule { }
+export class AdminPatientModule {}
