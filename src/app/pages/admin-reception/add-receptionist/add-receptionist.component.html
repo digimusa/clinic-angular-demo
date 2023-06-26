@@ -1,71 +1,87 @@
 <!-- Page Header -->
 <div class="page-header">
-  <div class="row">
-    <div class="col-sm-12">
-      <h3 class="page-title">List of Receptionists</h3>
-    </div>
-    <div class="col-sm-12 mt-2">
-      <button
-        (click)="addReceptionist()"
-        pButton
-        pRipple
-        label="Add New Receptionist"
-        icon="pi pi-plus"
-        class="p-button-success"
-      ></button>
+    <div class="row">
+      <div class="col-sm-12">
+        <h3 class="page-title">Add New Receptionist Form</h3>
+      </div>
     </div>
   </div>
-</div>
-<!-- /Page Header -->
-
-<div class="row">
-  <div class="col-sm-12">
-    <div class="card">
-      <div class="card-body">
-        <div class="card">
-          <p-table
-            [value]="customers"
-            [paginator]="true"
-            [rows]="5"
-            [showCurrentPageReport]="true"
-            [tableStyle]="{ 'min-width': '50rem' }"
-            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-            [rowsPerPageOptions]="[10, 25, 50]"
-          >
-            <ng-template pTemplate="header">
-              <tr>
-                <th style="width: 25%">Name</th>
-                <th style="width: 25%">Country</th>
-                <th style="width: 25%">Company</th>
-                <th style="width: 25%">Representative</th>
-              </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-customer>
-              <tr>
-                <td>{{ customer.name }}</td>
-                <td>{{ customer.country.name }}</td>
-                <td>{{ customer.company }}</td>
-                <td>{{ customer.representative.name }}</td>
-              </tr>
-            </ng-template>
-            <ng-template pTemplate="paginatorleft">
-              <p-button
-                type="button"
-                icon="pi pi-plus"
-                styleClass="p-button-text"
-              ></p-button>
-            </ng-template>
-            <ng-template pTemplate="paginatorright">
-              <p-button
-                type="button"
-                icon="pi pi-cloud"
-                styleClass="p-button-text"
-              ></p-button>
-            </ng-template>
-          </p-table>
-        </div>
-
-        <!-- <div class="table-responsive">
+  <!-- /Page Header -->
+  
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <form [formGroup]="addReceptionistForm">
+            <div class="row mb-3">
+              <div class="row mb-3">
+                <label for="firstName">First name</label>
+                <div>
+                  <input
+                    name="firstName"
+                    type="text"
+                    class="form-control"
+                    id="firstName"
+                    placeholder="Enter first name"
+                    formControlName="firstName"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="row mb-3">
+                <label for="lastName">Last name</label>
+                <div>
+                  <input
+                    name="lastName"
+                    type="text"
+                    class="form-control"
+                    id="lastName"
+                    placeholder="Enter last name"
+                    formControlName="lastName"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="row mb-3">
+                <label for="Email">Email</label>
+                <div>
+                  <input
+                    name="email"
+                    type="email"
+                    class="form-control"
+                    id="Email"
+                    placeholder="Enter an email"
+                    formControlName="email"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="row mb-3">
+                <label for="password">Password</label>
+                <div>
+                  <input
+                    name="password"
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    placeholder="Enter password"
+                    formControlName="password"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <button (click)="onSubmit()" class="btn btn-outline-primary">
+                Save Receptionist
+              </button>
+            </div>
+          </form>
+  
+          <!-- <div class="table-responsive">
             <table class="datatable table table-hover table-center mb-0">
               <thead>
                 <tr>
@@ -380,38 +396,9 @@
               </tbody>
             </table>
           </div> -->
-      </div>
-    </div>
-  </div>
-</div>
-
-<p-dialog
-  header="Register New Receptionist"
-  [(visible)]="visible"
-  [position]="position"
-  [modal]="true"
-  [style]="{ width: '50vw' }"
-  [draggable]="false"
-  [resizable]="false"
->
-  <form [formGroup]="addReceptionistForm">
-    <div class="row mb-3">
-      <div class="row mb-3">
-        <label for="Email" class="col-md-4 col-lg-3 col-form-label"
-          >Email</label
-        >
-        <div class="col-md-8 col-lg-9">
-          <input
-            name="email"
-            type="email"
-            class="form-control"
-            id="Email"
-            placeholder="Email"
-            formControlName="email"
-            readonly
-          />
         </div>
       </div>
     </div>
-  </form>
-</p-dialog>
+    <div class="col-sm-3"></div>
+  </div>
+  

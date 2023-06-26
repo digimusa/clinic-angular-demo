@@ -3,15 +3,21 @@ import { CommonModule } from '@angular/common';
 
 import { AdminReceptionRoutingModule } from './admin-reception-routing.module';
 import { AdminReceptionComponent } from './admin-reception.component';
+import { AddReceptionistComponent } from './add-receptionist/add-receptionist.component';
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
+const UX = [TableModule, ButtonModule, DialogModule];
 @NgModule({
-  declarations: [
-    AdminReceptionComponent
-  ],
+  declarations: [AdminReceptionComponent, AddReceptionistComponent],
   imports: [
     CommonModule,
-    AdminReceptionRoutingModule
-  ]
+    AdminReceptionRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ...UX,
+  ],
 })
-export class AdminReceptionModule { }
+export class AdminReceptionModule {}

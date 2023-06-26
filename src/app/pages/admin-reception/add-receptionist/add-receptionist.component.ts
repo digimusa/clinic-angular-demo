@@ -4,13 +4,12 @@ import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
-  selector: 'app-add-doctor',
-  templateUrl: './add-doctor.component.html',
-  styleUrls: ['./add-doctor.component.css']
+  selector: 'app-add-receptionist',
+  templateUrl: './add-receptionist.component.html',
+  styleUrls: ['./add-receptionist.component.css']
 })
-export class AddDoctorComponent implements OnInit {
-
-  addDoctorForm!: FormGroup;
+export class AddReceptionistComponent implements OnInit {
+  addReceptionistForm!: FormGroup;
   isSubmitted: boolean = false;
 
   constructor(
@@ -20,11 +19,11 @@ export class AddDoctorComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._addNewDoctorForm();
+    this._addNewReceptionistForm();
   }
 
-  private _addNewDoctorForm() {
-    this.addDoctorForm = this.fb.group({
+  private _addNewReceptionistForm() {
+    this.addReceptionistForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
