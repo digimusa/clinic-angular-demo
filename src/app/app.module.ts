@@ -22,6 +22,8 @@ import { PatientSidebarComponent } from './layouts/patient/patient-sidebar/patie
 import { DoctorHeaderComponent } from './layouts/doctor/doctor-header/doctor-header.component';
 import { DoctorSidebarComponent } from './layouts/doctor/doctor-sidebar/doctor-sidebar.component';
 import { DoctorLayoutComponent } from './layouts/doctor/doctor-layout/doctor-layout.component';
+import { ChangePasswordComponent } from './shared/change-password/change-password.component';
+import { ProfileSettingsComponent } from './shared/profile-settings/profile-settings.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text: 'Loading...',
@@ -75,6 +77,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     DoctorHeaderComponent,
     DoctorSidebarComponent,
     DoctorLayoutComponent,
+    ChangePasswordComponent,
+    ProfileSettingsComponent,
   ],
   imports: [
     BrowserModule,

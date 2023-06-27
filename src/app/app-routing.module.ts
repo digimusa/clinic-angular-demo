@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
+import { ChangePasswordComponent } from './shared/change-password/change-password.component';
+import { ProfileSettingsComponent } from './shared/profile-settings/profile-settings.component';
 
 const routes: Routes = [
   // ADMIN - ROUTES
@@ -71,16 +73,16 @@ const routes: Routes = [
 
   {
     path: 'profile-settings',
-    loadChildren: () =>
-      import('./pages/patient/profile-settings/profile-settings.module').then(
-        (m) => m.ProfileSettingsModule
-      ),
+    component: ProfileSettingsComponent,
+  },
+  {
+    path: 'change-password',
+    component: ChangePasswordComponent,
   },
 
   { path: 'doctor-dashboard', loadChildren: () => import('./pages/doctor/doctor-dashboard/doctor-dashboard.module').then(m => m.DoctorDashboardModule) },
   { path: 'doctor-appointments', loadChildren: () => import('./pages/doctor/doctor-appointments/doctor-appointments.module').then(m => m.DoctorAppointmentsModule) },
   { path: 'doctor-patients', loadChildren: () => import('./pages/doctor/doctor-patients/doctor-patients.module').then(m => m.DoctorPatientsModule) },
-
 ];
 
 @NgModule({
