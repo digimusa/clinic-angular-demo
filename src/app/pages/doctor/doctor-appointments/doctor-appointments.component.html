@@ -1,1 +1,58 @@
-<p>doctor-appointments works!</p>
+<div class="col-md-7 col-lg-8 col-xl-12">
+
+  <div class="col-md-12" style="margin-top: 14%;">
+    <h4 class="mb-3">My Appointments</h4>
+  </div>
+
+ 
+      <div class="card" style="margin-top:2% !important;">
+ 
+        <div class="card-body">
+          <div class="card">
+            <p-table 
+              [value]="customers"
+              [paginator]="true"
+              [rows]="5"
+              [showCurrentPageReport]="true"
+              [tableStyle]="{ 'min-width': '50rem' }"
+              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+              [rowsPerPageOptions]="[10, 25, 50]"
+            >
+              <ng-template pTemplate="header">
+                <tr>
+                  <th style="width: 25%">Name</th>
+                  <th style="width: 25%">Appointment Date</th>
+                  <th style="width: 25%">Appointment Time</th>
+                  <th style="width: 25%">Status</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-customer>
+                <tr>
+                  <td>{{ customer.name }}</td>
+                  <td>{{ customer.appointmentDate }}</td>
+                  <td>{{ customer.appointmentTime }}</td>
+                  <td>{{ customer.status }}</td>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="paginatorleft">
+                <p-button
+                  type="button"
+                  icon="pi pi-plus"
+                  styleClass="p-button-text"
+                ></p-button>
+              </ng-template>
+              <ng-template pTemplate="paginatorright">
+                <p-button
+                  type="button"
+                  icon="pi pi-cloud"
+                  styleClass="p-button-text"
+                ></p-button>
+              </ng-template>
+            </p-table>
+          </div>
+      
+          
+        </div>
+      </div>
+    </div>    
+ 

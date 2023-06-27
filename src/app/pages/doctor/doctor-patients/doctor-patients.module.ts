@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DoctorAppointmentsRoutingModule } from './doctor-appointments-routing.module';
-import { DoctorAppointmentsComponent } from './doctor-appointments.component';
 
+import { DoctorPatientsRoutingModule } from './doctor-patients-routing.module';
+import { DoctorPatientsComponent } from './doctor-patients.component';
 
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
@@ -17,14 +17,16 @@ const UX = [
 ]
 @NgModule({
   declarations: [
-    DoctorAppointmentsComponent
+    DoctorPatientsComponent
   ],
   imports: [
     CommonModule,
-    DoctorAppointmentsRoutingModule,
+    DoctorPatientsRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     ...UX
+
   ]
+
 })
-export class DoctorAppointmentsModule { }
+export class DoctorPatientsModule { }

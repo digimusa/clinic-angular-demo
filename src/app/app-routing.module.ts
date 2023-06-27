@@ -79,6 +79,7 @@ const routes: Routes = [
 
   { path: 'doctor-dashboard', loadChildren: () => import('./pages/doctor/doctor-dashboard/doctor-dashboard.module').then(m => m.DoctorDashboardModule) },
   { path: 'doctor-appointments', loadChildren: () => import('./pages/doctor/doctor-appointments/doctor-appointments.module').then(m => m.DoctorAppointmentsModule) },
+  { path: 'doctor-patients', loadChildren: () => import('./pages/doctor/doctor-patients/doctor-patients.module').then(m => m.DoctorPatientsModule) },
 
 ];
 
