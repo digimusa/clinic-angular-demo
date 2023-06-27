@@ -68,6 +68,7 @@ const routes: Routes = [
         (m) => m.ViewAppointmentsModule
       ),
   },
+
   {
     path: 'profile-settings',
     loadChildren: () =>
@@ -81,6 +82,21 @@ const routes: Routes = [
       import('./pages/patient/change-password/change-password.module').then(
         (m) => m.ChangePasswordModule
       ),
+  },
+
+  {
+    path: 'doctor-dashboard',
+    loadChildren: () =>
+      import('./pages/doctor/doctor-dashboard/doctor-dashboard.module').then(
+        (m) => m.DoctorDashboardModule
+      ),
+  },
+  {
+    path: 'doctor-appointments',
+    loadChildren: () =>
+      import(
+        './pages/doctor/doctor-appointments/doctor-appointments.module'
+      ).then((m) => m.DoctorAppointmentsModule),
   },
 ];
 
