@@ -10,24 +10,16 @@ import { DialogModule } from 'primeng/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddDoctorComponent } from './add-doctor/add-doctor.component';
 
-const UX = [
-  TableModule,
-  ButtonModule,
-  DialogModule
-]
-
+const UX = [TableModule, ButtonModule, DialogModule];
 
 @NgModule({
-  declarations: [
-    DoctorDashboardComponent,
-    AddDoctorComponent
-  ],
+  declarations: [DoctorDashboardComponent, AddDoctorComponent],
   imports: [
     CommonModule,
     DoctorDashboardRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    ...UX
-  ]
+    ...UX,
+  ],
 })
-export class DoctorDashboardModule { }
+export class DoctorDashboardModule {}

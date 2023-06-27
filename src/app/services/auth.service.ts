@@ -37,14 +37,14 @@ export class AuthService {
 
   register(data: User) {
     return this.http.post<User>(
-      'http://localhost:8080/api/v1/patient' + '/register',
+      'http://localhost:8081/api/v1/patient' + '/register',
       data
     );
   }
 
   getUser() {
     let user = localStorage.getItem('user');
-    console.log('uswer: ', user);
+    // console.log('uswer: ', user);
     if (user != null) {
       return JSON.parse(user);
     } else {
@@ -52,6 +52,10 @@ export class AuthService {
       // this.logout();
       // return null;
     }
+  }
+
+  getAllDoctors() {
+    return this.http.get('http://localhost:8081/api/v1/admin/viewDoctor');
   }
 
   getUserRole() {
