@@ -10,6 +10,7 @@ import { DialogModule } from 'primeng/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddDoctorComponent } from './add-doctor/add-doctor.component';
 
+
 const UX = [TableModule, ButtonModule, DialogModule];
 
 @NgModule({

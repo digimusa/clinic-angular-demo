@@ -19,14 +19,7 @@ export class AdminAppointmentComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.loadDoctors);
     this._addNewDoctorForm();
-  }
-
-  loadDoctors() {
-    this.service.getAllDoctors().subscribe((res) => {
-      this.doctor = res;
-    });
   }
 
   addDoctorForm!: FormGroup;
