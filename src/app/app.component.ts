@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
 
   _getLoggedInUser() {
     this.currentLoggedInUser = this.userService.isLoggedIn();
-    console.log('this.currentLoggedInUser: ', this.currentLoggedInUser);
+    // console.log('this.currentLoggedInUser: ', this.currentLoggedInUser);
   }
 
   _getCurrentUserRole() {

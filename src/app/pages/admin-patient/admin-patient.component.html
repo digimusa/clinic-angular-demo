@@ -14,7 +14,7 @@
       <div class="card-body">
         <div class="card">
           <p-table
-            [value]="customers"
+            [value]="user"
             [paginator]="true"
             [rows]="5"
             [showCurrentPageReport]="true"
@@ -24,18 +24,41 @@
           >
             <ng-template pTemplate="header">
               <tr>
-                <th style="width: 25%">Name</th>
-                <th style="width: 25%">Country</th>
-                <th style="width: 25%">Company</th>
-                <th style="width: 25%">Representative</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Email</th>
+                <th>Contact Number</th>
+                <th>Action</th>
               </tr>
             </ng-template>
-            <ng-template pTemplate="body" let-customer>
+            <ng-template pTemplate="body" let-user>
               <tr>
-                <td>{{ customer.name }}</td>
-                <td>{{ customer.country.name }}</td>
-                <td>{{ customer.company }}</td>
-                <td>{{ customer.representative.name }}</td>
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.lastName }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.contactNo }}</td>
+                <td>
+                  <button
+                    pButton
+                    type="button"
+                    label="Danger"
+                    class="p-button-rounded p-button-rounded"
+                  ></button>
+
+                  <button
+                    pButton
+                    type="button"
+                    label="Danger"
+                    class="p-button-success p-button-rounded"
+                  ></button>
+
+                  <button
+                    pButton
+                    type="button"
+                    label="Danger"
+                    class="p-button-danger p-button-rounded"
+                  ></button>
+                </td>
               </tr>
             </ng-template>
             <ng-template pTemplate="paginatorleft">

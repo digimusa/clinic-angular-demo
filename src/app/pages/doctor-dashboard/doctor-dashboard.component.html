@@ -32,11 +32,12 @@
           >
             <ng-template pTemplate="header">
               <tr>
-                <th style="width: 25%">FirstName</th>
-                <th style="width: 25%">LastName</th>
-                <th style="width: 25%">Email</th>
-                <th style="width: 25%">Specialization</th>
-                <th style="width: 25%">Action</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Email</th>
+                <th>Specialization</th>
+                <th>Contact Number</th>
+                <th>Action</th>
               </tr>
             </ng-template>
             <ng-template pTemplate="body" let-doctor>
@@ -46,6 +47,28 @@
                 <td>{{ doctor.email }}</td>
                 <td>{{ doctor.contactNo }}</td>
                 <td>{{ doctor.specialization }}</td>
+                <td>
+                  <button
+                    pButton
+                    type="button"
+                    label="Danger"
+                    class="p-button-rounded p-button-rounded"
+                  ></button>
+
+                  <button
+                    pButton
+                    type="button"
+                    label="Danger"
+                    class="p-button-success p-button-rounded"
+                  ></button>
+
+                  <button
+                    pButton
+                    type="button"
+                    label="Danger"
+                    class="p-button-danger p-button-rounded"
+                  ></button>
+                </td>
               </tr>
             </ng-template>
             <ng-template pTemplate="paginatorleft">
