@@ -8,8 +8,28 @@
   <div class="form-con">
     <form [formGroup]="loginForm">
       <h3>Log in</h3>
-      <input type="email" name="email" placeholder="email" formControlName="email" class="box" required />
-      <input type="password" name="password" placeholder="Password" formControlName="password" class="box" required />
+      <div>
+        <!-- <button matPrefix mat-icon-button disabled="true">
+          <mat-icon>person</mat-icon>
+        </button> -->
+        <input
+          type="email"
+          name="email"
+          placeholder="email"
+          formControlName="email"
+          class="box"
+          required
+        />
+      </div>
+
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        formControlName="password"
+        class="box"
+        required
+      />
       <button class="btn" (click)="onSubmit()">Login</button>
       <p><a href="">Forgot Your Password</a></p>
       <p><a routerLink="/signup">Register</a></p>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Doctor } from 'src/app/models/doctor';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -10,7 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./admin-appointment.component.css'],
 })
 export class AdminAppointmentComponent implements OnInit {
-  doctor!: User;
+  doctor: Doctor[] = [];
 
   constructor(
     private fb: FormBuilder,

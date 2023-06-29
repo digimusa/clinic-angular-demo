@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { User } from '../models/user';
 import { UserService } from './user.service';
+import { Doctor } from '../models/doctor';
 
 @Injectable({
   providedIn: 'root',
@@ -55,7 +56,9 @@ export class AuthService {
   }
 
   getAllDoctors() {
-    return this.http.get('http://localhost:8081/api/v1/admin/viewDoctor');
+    return this.http.get<Doctor[]>(
+      'http://localhost:8081/api/v1/admin/viewDoctor'
+    );
   }
 
   getUserRole() {
