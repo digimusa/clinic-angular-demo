@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/models/user';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-admin-reception',
@@ -19,7 +20,7 @@ export class AdminReceptionComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private service: AuthService
+    private service: AdminService
   ) {}
 
   ngOnInit(): void {

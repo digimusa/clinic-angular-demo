@@ -13,7 +13,6 @@ import { Doctor } from '../models/doctor';
 })
 export class AuthService {
   apiURL = environment.apiUrl + '/auth';
-  apiAll = 'http://localhost:8081/api/v1';
   private currentUserSource: BehaviorSubject<AuthenticationResponse>;
   public currentUser$!: Observable<AuthenticationResponse>;
 
@@ -53,38 +52,6 @@ export class AuthService {
       this.logout();
       // this.logout();
       // return null;
-    }
-  }
-
-  getAllDoctors() {
-    return this.http.get<Doctor[]>(
-      'http://localhost:8081/api/v1/admin/viewDoctor'
-    );
-  }
-
-  getAllPatients() {
-    return this.http.get<User[]>(
-      'http://localhost:8081/api/v1/admin/viewPatients'
-    );
-  }
-
-  getAllReceptionists() {
-    return this.http.get<User[]>(
-      'http://localhost:8081/api/v1/admin/viewReceptionists'
-    );
-  }
-
-  getAllAdmins() {
-    return this.http.get<User[]>(
-      'http://localhost:8081/api/v1/admin/viewAdmins'
-    );
-  }
-
-  GetAll(role: string = '') {
-    if (role == '') {
-      return this.http.get<User[]>(this.apiAll);
-    } else {
-      return this.http.get<User[]>(`${this.apiAll}?role=${role}`);
     }
   }
 
