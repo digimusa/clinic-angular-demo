@@ -2,40 +2,73 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { Doctor } from 'src/app/models/doctor';
+import { NotificationService } from 'src/app/services/notification.service';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-add-doctor',
   templateUrl: './add-doctor.component.html',
-  styleUrls: ['./add-doctor.component.css']
+  styleUrls: ['./add-doctor.component.css'],
 })
 export class AddDoctorComponent implements OnInit {
-
   addDoctorForm!: FormGroup;
   isSubmitted: boolean = false;
+  responseMessage: any;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private ngxService: NgxUiLoaderService,
-  ) { }
+    private authService: AdminService,
+    private notificationService: NotificationService
+  ) {}
 
   ngOnInit(): void {
-    this._addNewDoctorForm();
+    this.addDoctorFormInit();
   }
 
-  private _addNewDoctorForm() {
+  addDoctorFormInit() {
     this.addDoctorForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      email: this.fb.control(
+        '',
+        Validators.compose([Validators.required, Validators.email])
+      ),
+      firstName: this.fb.control('', Validators.required),
+      lastName: this.fb.control('', Validators.required),
+      password: this.fb.control('', Validators.compose([Validators.required])),
     });
   }
 
-  onSubmit() {
-    this.ngxService.start()
+  proceedAddDoctor() {
+    this.ngxService.start();
     this.isSubmitted = true;
-    this.ngxService.stop();
+    const doctor: Doctor = {
+      firstName: this.addDoctorFormError['firstName'].value,
+      lastName: this.addDoctorFormError['lastName'].value,
+      email: this.addDoctorFormError['email'].value,
+      password: this.addDoctorFormError['password'].value,
+    };
+    this.authService.addNewDoctor(doctor).subscribe(
+      (response: any) => {
+        this.ngxService.stop();
+        this.responseMessage = response?.message;
+        this.notificationService.showSuccess(
+          'Doctor added successfully',
+          'SUCCESS'
+        );
+        this.addDoctorForm.value.clear;
+        this.router.navigate(['/admin-doctor']);
+      },
+      (error: any) => {
+        this.ngxService.stop();
+        console.log('error: ', error);
+      }
+    );
   }
 
+  //errors
+  get addDoctorFormError() {
+    return this.addDoctorForm.controls;
+  }
 }

@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { User } from '../models/user';
 import { UserService } from './user.service';
+import { Doctor } from '../models/doctor';
 
 @Injectable({
   providedIn: 'root',
@@ -54,10 +55,6 @@ export class AuthService {
     }
   }
 
-  getAllDoctors() {
-    return this.http.get('http://localhost:8081/api/v1/admin/viewDoctor');
-  }
-
   getUserRole() {
     let user = this.getUser();
     return user.roles;
@@ -66,13 +63,6 @@ export class AuthService {
   logout() {
     localStorage.clear();
     this.router.navigate(['/login/login']);
-    // localStorage.removeItem('token');
-    // localStorage.removeItem('user');
-    // this.currentUserSource.next({
-    //   user: new User,
-    //   token: ''
-    // });
-    // this.router.navigate(['/login/login']);
   }
 
   public roleMatch(allowedRoles: any): any {

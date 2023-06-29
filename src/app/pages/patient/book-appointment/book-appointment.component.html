@@ -1,66 +1,60 @@
 <br />
 <br />
 <br />
-
 <!-- Page Header -->
 <div class="page-header">
   <div class="row">
     <div class="col-sm-12">
-      <h3 class="page-title">List of Appointments</h3>
+      <h3 class="page-title">Book an Appointment</h3>
     </div>
   </div>
 </div>
 <!-- /Page Header -->
 
 <div class="row">
-  <div class="col-sm-12">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <div class="card">
-          <p-table
-            [value]="appointments"
-            [paginator]="true"
-            [rows]="5"
-            [showCurrentPageReport]="true"
-            [tableStyle]="{ 'min-width': '50rem' }"
-            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-            [rowsPerPageOptions]="[10, 25, 50]"
-          >
-            <ng-template pTemplate="header">
-              <tr>
-                <th style="width: 25%">Appointment ID</th>
-                <th style="width: 25%">Booking Date</th>
-                <th style="width: 25%">Problem(Details)</th>
-                <th style="width: 25%">Status</th>
-                <th style="width: 25%">Patient ID</th>
-                <th style="width: 25%">Doctor ID</th>
-              </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-appointments>
-              <tr>
-                <td>{{ appointments.firstName }}</td>
-                <td>{{ appointments.lastName }}</td>
-                <td>{{ appointments.email }}</td>
-                <td>{{ appointments.contactNo }}</td>
-                <td>{{ appointments.specialization }}</td>
-              </tr>
-            </ng-template>
-            <ng-template pTemplate="paginatorleft">
-              <p-button
-                type="button"
-                icon="pi pi-plus"
-                styleClass="p-button-text"
-              ></p-button>
-            </ng-template>
-            <ng-template pTemplate="paginatorright">
-              <p-button
-                type="button"
-                icon="pi pi-cloud"
-                styleClass="p-button-text"
-              ></p-button>
-            </ng-template>
-          </p-table>
-        </div>
+        <form [formGroup]="bookAppointmentForm">
+          <div class="row mb-3">
+            <div class="row mb-3">
+              <label for="firstName">Booking Date</label>
+              <div>
+                <input
+                  name="firstName"
+                  type="date"
+                  class="form-control"
+                  id=""
+                  placeholder="Enter first name"
+                  formControlName="bookingdate"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="row mb-3">
+              <label for="lastName">Details of your problem</label>
+              <div>
+                <textarea
+                  id="details"
+                  name="details"
+                  rows="4"
+                  cols="50"
+                  class="form-control"
+                  placeholder="e.g Flu, Headache"
+                  formControlName="details"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <button (click)="bookApp()" class="btn btn-outline-primary">
+              Book Now
+            </button>
+          </div>
+        </form>
 
         <!-- <div class="table-responsive">
           <table class="datatable table table-hover table-center mb-0">
@@ -380,35 +374,5 @@
       </div>
     </div>
   </div>
+  <div class="col-sm-3"></div>
 </div>
-
-<p-dialog
-  header="Register New Doctor"
-  [(visible)]="visible"
-  [position]="position"
-  [modal]="true"
-  [style]="{ width: '50vw' }"
-  [draggable]="false"
-  [resizable]="false"
->
-  <form [formGroup]="addDoctorForm">
-    <div class="row mb-3">
-      <div class="row mb-3">
-        <label for="Email" class="col-md-4 col-lg-3 col-form-label"
-          >Email</label
-        >
-        <div class="col-md-8 col-lg-9">
-          <input
-            name="email"
-            type="email"
-            class="form-control"
-            id="Email"
-            placeholder="Email"
-            formControlName="email"
-            readonly
-          />
-        </div>
-      </div>
-    </div>
-  </form>
-</p-dialog>

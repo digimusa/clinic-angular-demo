@@ -70,6 +70,13 @@ const routes: Routes = [
         (m) => m.ViewAppointmentsModule
       ),
   },
+  {
+    path: 'book-appointment',
+    loadChildren: () =>
+      import('./pages/patient/book-appointment/book-appointment.module').then(
+        (m) => m.BookAppointmentModule
+      ),
+  },
 
   {
     path: 'profile-settings',
