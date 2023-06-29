@@ -14,7 +14,7 @@
       <div class="card-body">
         <div class="card">
           <p-table
-            [value]="customers"
+            [value]="appointments"
             [paginator]="true"
             [rows]="5"
             [showCurrentPageReport]="true"
@@ -24,18 +24,20 @@
           >
             <ng-template pTemplate="header">
               <tr>
-                <th>Name</th>
-                <th>Country</th>
-                <th>Company</th>
-                <th>Representative</th>
+                <th>Patient Name</th>
+                <th>Appointment date</th>
+                <th>Status</th>
+                <th>Problem</th>
+                <th>Doctor Name</th>
               </tr>
             </ng-template>
-            <ng-template pTemplate="body" let-customer>
+            <ng-template pTemplate="body" let-appointment>
               <tr>
-                <td>{{ customer.name }}</td>
-                <td>{{ customer.country.name }}</td>
-                <td>{{ customer.company }}</td>
-                <td>{{ customer.representative.name }}</td>
+                <td>{{ appointment.firstName }}</td>
+                <td>{{ appointment.appointment_booking_date }}</td>
+                <td>{{ appointment.status }}</td>
+                <td>{{ appointment.problem }}</td>
+                <td>{{ appointment.firstName }}</td>
               </tr>
             </ng-template>
             <ng-template pTemplate="paginatorleft">

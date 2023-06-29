@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Doctor } from 'src/app/models/doctor';
+import { AdminService } from 'src/app/services/admin.service';
 
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -23,7 +24,7 @@ export class DoctorDashboardComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private service: AuthService
+    private service: AdminService
   ) {}
 
   ngOnInit(): void {

@@ -24,6 +24,9 @@ import { DoctorSidebarComponent } from './layouts/doctor/doctor-sidebar/doctor-s
 import { DoctorLayoutComponent } from './layouts/doctor/doctor-layout/doctor-layout.component';
 import { ChangePasswordComponent } from './shared/change-password/change-password.component';
 import { ProfileSettingsComponent } from './shared/profile-settings/profile-settings.component';
+import { ReceptionistHeaderComponent } from './layouts/receptionist/receptionist-header/receptionist-header.component';
+import { ReceptionistSidebarComponent } from './layouts/receptionist/receptionist-sidebar/receptionist-sidebar.component';
+import { ReceptionistLayoutComponent } from './layouts/receptionist/receptionist-layout/receptionist-layout.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text: 'Loading...',
@@ -79,6 +82,10 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     DoctorLayoutComponent,
     ChangePasswordComponent,
     ProfileSettingsComponent,
+    ReceptionistHeaderComponent,
+    ReceptionistSidebarComponent,
+    ReceptionistLayoutComponent,
+
   ],
   imports: [
     BrowserModule,

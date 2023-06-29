@@ -3,8 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
-import { AppointmentService } from 'src/app/services/appointment.service';
-import { an } from '@fullcalendar/core/internal-common';
 
 @Component({
   selector: 'app-admin-patient',
@@ -14,7 +12,7 @@ import { an } from '@fullcalendar/core/internal-common';
 export class AdminPatientComponent implements OnInit {
   user: User[] = [];
 
-  constructor(private service: AppointmentService) {}
+  constructor(private service: AuthService) {}
 
   ngOnInit(): void {
     this.loadPatients();
