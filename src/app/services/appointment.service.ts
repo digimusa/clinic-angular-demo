@@ -28,4 +28,8 @@ export class AppointmentService {
   updateAppointmentById(id: string, data: any) {
     return this.http.put(this.apiURL + '/update-appointment/', id, data);
   }
+
+  getAllAppointments() {
+    return this.http.get<Appointments>(this.apiURL + '/get-all-appointments');
+  }
 }
