@@ -87,27 +87,11 @@ const routes: Routes = [
     component: ChangePasswordComponent,
   },
 
-  {
-    path: 'doctor-dashboard',
-    loadChildren: () =>
-      import('./pages/doctor/doctor-dashboard/doctor-dashboard.module').then(
-        (m) => m.DoctorDashboardModule
-      ),
-  },
-  {
-    path: 'doctor-appointments',
-    loadChildren: () =>
-      import(
-        './pages/doctor/doctor-appointments/doctor-appointments.module'
-      ).then((m) => m.DoctorAppointmentsModule),
-  },
-  {
-    path: 'doctor-patients',
-    loadChildren: () =>
-      import('./pages/doctor/doctor-patients/doctor-patients.module').then(
-        (m) => m.DoctorPatientsModule
-      ),
-  },
+  { path: 'doctor-dashboard', loadChildren: () => import('./pages/doctor/doctor-dashboard/doctor-dashboard.module').then(m => m.DoctorDashboardModule) },
+  { path: 'doctor-appointments', loadChildren: () => import('./pages/doctor/doctor-appointments/doctor-appointments.module').then(m => m.DoctorAppointmentsModule) },
+  { path: 'doctor-patients', loadChildren: () => import('./pages/doctor/doctor-patients/doctor-patients.module').then(m => m.DoctorPatientsModule) },
+  { path: 'receptionist-dashboard', loadChildren: () => import('./pages/receptionist/receptionist-dashboard/receptionist-dashboard.module').then(m => m.ReceptionistDashboardModule) },
+  { path: 'receptionist-appointments', loadChildren: () => import('./pages/receptionist/receptionist-appointments/receptionist-appointments.module').then(m => m.ReceptionistAppointmentsModule) },
 ];
 
 @NgModule({

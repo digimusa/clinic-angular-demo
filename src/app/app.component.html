@@ -4,6 +4,8 @@
 
 <app-doctor-layout *ngIf="isUserDoctor()"></app-doctor-layout>
 
+<app-receptionist-layout *ngIf="isUserReception()"></app-receptionist-layout>
+
 
 <router-outlet *ngIf="!this.userService.isLoggedIn()"></router-outlet>
 <ngx-ui-loader></ngx-ui-loader>
