@@ -75,7 +75,7 @@ export class SignInComponent implements OnInit {
         } else if (this.userService.isLoggedIn() && role === 'DOCTOR') {
           this.router.navigate(['/doctor-dashboard']);
         } else if (this.userService.isLoggedIn() && role === 'RECEPTION') {
-          this.router.navigate(['/reception-dashboard']);
+          this.router.navigate(['/receptionist-dashboard']);
         } else if (this.userService.isLoggedIn() && role === 'PATIENT') {
           this.router.navigate(['/patient-dashboard']);
         } else {
