@@ -13,7 +13,6 @@ import { Doctor } from '../models/doctor';
 })
 export class AuthService {
   apiURL = environment.apiUrl + '/auth';
-  apiAll = 'http://localhost:8081/api/v1';
   private currentUserSource: BehaviorSubject<AuthenticationResponse>;
   public currentUser$!: Observable<AuthenticationResponse>;
 

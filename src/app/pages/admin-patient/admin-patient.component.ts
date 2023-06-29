@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
-import { AuthService } from 'src/app/services/auth.service';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-admin-patient',
@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class AdminPatientComponent implements OnInit {
   user: User[] = [];
 
-  constructor(private service: AuthService) {}
+  constructor(private service: AdminService) {}
 
   ngOnInit(): void {
     this.loadPatients();
