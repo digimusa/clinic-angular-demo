@@ -13,6 +13,7 @@ import { Doctor } from '../models/doctor';
 })
 export class AuthService {
   apiURL = environment.apiUrl + '/auth';
+  apiAll = 'http://localhost:8081/api/v1';
   private currentUserSource: BehaviorSubject<AuthenticationResponse>;
   public currentUser$!: Observable<AuthenticationResponse>;
 
@@ -55,12 +56,6 @@ export class AuthService {
     }
   }
 
-  getAllDoctors() {
-    return this.http.get<Doctor[]>(
-      'http://localhost:8081/api/v1/admin/viewDoctor'
-    );
-  }
-
   getUserRole() {
     let user = this.getUser();
     return user.roles;
@@ -69,13 +64,6 @@ export class AuthService {
   logout() {
     localStorage.clear();
     this.router.navigate(['/login/login']);
-    // localStorage.removeItem('token');
-    // localStorage.removeItem('user');
-    // this.currentUserSource.next({
-    //   user: new User,
-    //   token: ''
-    // });
-    // this.router.navigate(['/login/login']);
   }
 
   public roleMatch(allowedRoles: any): any {
