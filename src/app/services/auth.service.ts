@@ -56,38 +56,6 @@ export class AuthService {
     }
   }
 
-  getAllDoctors() {
-    return this.http.get<Doctor[]>(
-      'http://localhost:8081/api/v1/admin/viewDoctor'
-    );
-  }
-
-  getAllPatients() {
-    return this.http.get<User[]>(
-      'http://localhost:8081/api/v1/admin/viewPatients'
-    );
-  }
-
-  getAllReceptionists() {
-    return this.http.get<User[]>(
-      'http://localhost:8081/api/v1/admin/viewReceptionists'
-    );
-  }
-
-  getAllAdmins() {
-    return this.http.get<User[]>(
-      'http://localhost:8081/api/v1/admin/viewAdmins'
-    );
-  }
-
-  GetAll(role: string = '') {
-    if (role == '') {
-      return this.http.get<User[]>(this.apiAll);
-    } else {
-      return this.http.get<User[]>(`${this.apiAll}?role=${role}`);
-    }
-  }
-
   getUserRole() {
     let user = this.getUser();
     return user.roles;
@@ -96,13 +64,6 @@ export class AuthService {
   logout() {
     localStorage.clear();
     this.router.navigate(['/login/login']);
-    // localStorage.removeItem('token');
-    // localStorage.removeItem('user');
-    // this.currentUserSource.next({
-    //   user: new User,
-    //   token: ''
-    // });
-    // this.router.navigate(['/login/login']);
   }
 
   public roleMatch(allowedRoles: any): any {
