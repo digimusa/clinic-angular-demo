@@ -9,4 +9,8 @@ import { User } from '../models/user';
 export class PatientService {
   apiURL = environment.apiUrl + '/patient';
   constructor(private http: HttpClient) {}
+
+  public getSingleUser() {
+    return this.http.get<User>(this.apiURL + '/get-patient');
+  }
 }
