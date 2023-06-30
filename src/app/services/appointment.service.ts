@@ -32,4 +32,8 @@ export class AppointmentService {
   getAllAppointments() {
     return this.http.get<Appointments>(this.apiURL + '/get-all-appointments');
   }
+
+  getAppointmentsForDoctor(id: any) {
+    return this.http.get(this.apiURL + '/appointments-for-doctor/' + id);
+  }
 }

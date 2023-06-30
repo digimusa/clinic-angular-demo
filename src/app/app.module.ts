@@ -28,6 +28,7 @@ import { ReceptionistHeaderComponent } from './layouts/receptionist/receptionist
 import { ReceptionistSidebarComponent } from './layouts/receptionist/receptionist-sidebar/receptionist-sidebar.component';
 import { ReceptionistLayoutComponent } from './layouts/receptionist/receptionist-layout/receptionist-layout.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text: 'Loading...',
@@ -38,34 +39,6 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   fgsType: SPINNER.chasingDots,
   fgsSize: 100,
   hasProgressBar: false,
-  // "bgsColor": "red",
-  // "bgsOpacity": 0.5,
-  // "bgsPosition": "bottom-right",
-  // "bgsSize": 60,
-  // "bgsType": "chasing-dots",
-  // "blur": 6,
-  // "delay": 0,
-  // "fastFadeOut": true,
-  // "fgsColor": "#21b6a8",
-  // "fgsPosition": "center-center",
-  // "fgsSize": 90,
-  // "fgsType": "chasing-dots",
-  // "gap": 24,
-  // "logoPosition": "center-center",
-  // "logoSize": 120,
-  // "logoUrl": "",
-  // "masterLoaderId": "master",
-  // "overlayBorderRadius": "0",
-  // "overlayColor": "rgba(40, 40, 40, 0.8)",
-  // "pbColor": "#21b6a8",
-  // "pbDirection": "ltr",
-  // "pbThickness": 3,
-  // "hasProgressBar": true,
-  // "text": "",
-  // "textColor": "#FFFFFF",
-  // "textPosition": "center-center",
-  // "maxTime": -1,
-  // "minTime": 300
 };
 
 @NgModule({
@@ -97,6 +70,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     ToastrModule.forRoot(),
     AuthModule,
+    ModalModule
   ],
   providers: [
     AuthGuard,

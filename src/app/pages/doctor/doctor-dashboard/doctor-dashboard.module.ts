@@ -10,8 +10,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CalendarAppointmentComponent } from './calendar-appointment/calendar-appointment.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
-const UX = [TableModule, ButtonModule, DialogModule];
+const UX = [TableModule, ButtonModule, DialogModule, ConfirmDialogModule];
 @NgModule({
   declarations: [DoctorDashboardComponent, CalendarAppointmentComponent],
   imports: [
