@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Appointments } from 'src/app/models/appointments';
 import { Doctor } from 'src/app/models/doctor';
 import { User } from 'src/app/models/user';
 import { AdminService } from 'src/app/services/admin.service';
@@ -13,7 +14,7 @@ import { AdminService } from 'src/app/services/admin.service';
 export class AdminAppointmentComponent implements OnInit {
   doctor: Doctor[] = [];
 
-  appointments: any[] = [];
+  appointments: Appointments[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -23,6 +24,7 @@ export class AdminAppointmentComponent implements OnInit {
 
   ngOnInit(): void {
     this._addNewDoctorForm();
+    this.loadAppointments();
   }
 
   addDoctorForm!: FormGroup;
@@ -41,8 +43,10 @@ export class AdminAppointmentComponent implements OnInit {
   }
 
   loadAppointments() {
-    this.service.getAllAppointments().subscribe((res: any) => {
+    this.service.getAllAppointments().subscribe((res: Appointments[]) => {
       this.appointments = res;
+
+      console.log('Results ', res);
     });
   }
 

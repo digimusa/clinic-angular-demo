@@ -3,13 +3,12 @@ import { environment } from 'src/environments/environment';
 import { Doctor } from '../models/doctor';
 import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
-
+import { Appointments } from '../models/appointments';
 @Injectable({
   providedIn: 'root',
 })
 export class AdminService {
   apiURL = environment.apiUrl + '/admin';
-
   constructor(private http: HttpClient) {}
 
   getAllDoctors() {
@@ -24,9 +23,8 @@ export class AdminService {
     return this.http.get<User[]>(this.apiURL + '/viewReceptionists');
   }
 
-  //Check type
   getAllAppointments() {
-    return this.http.get<any>(this.apiURL + '/viewAppointments');
+    return this.http.get<Appointments[]>(this.apiURL + '/viewAppointments');
   }
 
   getAllAdmins() {
@@ -40,4 +38,6 @@ export class AdminService {
   addNewReceptionist(data: User) {
     return this.http.post<User>(this.apiURL + '/addNewReceptionist', data);
   }
+
+  
 }
