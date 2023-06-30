@@ -29,15 +29,45 @@
                 <th>Status</th>
                 <th>Problem</th>
                 <th>Doctor Name</th>
+                <th>Action</th>
               </tr>
             </ng-template>
             <ng-template pTemplate="body" let-appointment>
               <tr>
-                <td>{{ appointment.firstName }}</td>
-                <td>{{ appointment.appointment_booking_date }}</td>
+                <td>
+                  {{
+                    appointment.patient.firstName +
+                      " " +
+                      appointment.patient.lastName
+                  }}
+                </td>
+                <td>{{ appointment.appointmentBookingDate }}</td>
                 <td>{{ appointment.status }}</td>
                 <td>{{ appointment.problem }}</td>
-                <td>{{ appointment.firstName }}</td>
+                <td>
+                  {{
+                    appointment.doctor.firstName +
+                      " " +
+                      appointment.doctor.lastName
+                  }}
+                </td>
+                <td>
+                  <button
+                    pButton
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#userDetails"
+                    icon="pi pi-user-edit"
+                    class="p-button-success p-button-rounded mr-2"
+                  ></button>
+
+                  <button
+                    pButton
+                    type="button"
+                    icon="pi pi-trash"
+                    class="p-button-danger p-button-rounded"
+                  ></button>
+                </td>
               </tr>
             </ng-template>
             <ng-template pTemplate="paginatorleft">
