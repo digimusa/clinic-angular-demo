@@ -27,6 +27,7 @@ import { ProfileSettingsComponent } from './shared/profile-settings/profile-sett
 import { ReceptionistHeaderComponent } from './layouts/receptionist/receptionist-header/receptionist-header.component';
 import { ReceptionistSidebarComponent } from './layouts/receptionist/receptionist-sidebar/receptionist-sidebar.component';
 import { ReceptionistLayoutComponent } from './layouts/receptionist/receptionist-layout/receptionist-layout.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text: 'Loading...',
@@ -85,13 +86,14 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     ReceptionistHeaderComponent,
     ReceptionistSidebarComponent,
     ReceptionistLayoutComponent,
-
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     ToastrModule.forRoot(),
     AuthModule,

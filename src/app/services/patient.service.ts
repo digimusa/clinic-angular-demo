@@ -13,4 +13,8 @@ export class PatientService {
   public getSingleUser() {
     return this.http.get<User>(this.apiURL + '/get-patient');
   }
+
+  public updateProfile(code: string, data: User) {
+    return this.http.put<User>(this.apiURL + '/update-patient/' + code, data);
+  }
 }

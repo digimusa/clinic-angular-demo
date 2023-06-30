@@ -18,7 +18,9 @@ export class ProfileSettingsComponent implements OnInit {
   responseMessage: any;
   role: any;
   patient!: User;
+  userId: any;
 
+  temPatient!: User;
   email!: string;
   firstName!: string;
   lastName!: string;
@@ -35,17 +37,20 @@ export class ProfileSettingsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.patientService.getSingleUser().subscribe((res: User) => {
-      this.patient = res;
-      this.patient.email = res.email;
-      this.patient.firstName = res.firstName;
-      this.patient.lastName = res.lastName;
-      this.patient.contactNo = res.contactNo;
-      this.patient.address = res.address;
-    });
+    this.editProfileFormInit();
+    // this.patientService.getSingleUser().subscribe((res: User) => {
+    //   this.patient = res;
+    //   this.patient.email = res.email;
+    //   this.patient.firstName = res.firstName;
+    //   this.patient.lastName = res.lastName;
+    //   this.patient.contactNo = res.contactNo;
+    //   this.patient.address = res.address;
+    // });
+    // this.profileFormInit();
+    // }
   }
 
-  profileFormInit() {
+  editProfileFormInit() {
     this.profileForm = this.fb.group({
       email: this.fb.control(this.email, Validators.required),
       firstName: this.fb.control(this.firstName, Validators.required),
@@ -53,11 +58,24 @@ export class ProfileSettingsComponent implements OnInit {
       contactNo: this.fb.control(this.contactNo, Validators.required),
       address: this.fb.control(this.address, Validators.required),
     });
+    this.getLoggedInUser();
+  }
+
+  getLoggedInUser() {
+    this.patientService.getSingleUser().subscribe((res: User) => {
+      this.userId = res.userId;
+      this.profileFormError['email'].setValue(res.email);
+      this.profileFormError['firstName'].setValue(res.firstName);
+      this.profileFormError['lastName'].setValue(res.lastName);
+      this.profileFormError['contactNo'].setValue(res.contactNo);
+      this.profileFormError['address'].setValue(res.address);
+    });
   }
 
   saveProfile() {
     this.ngxService.start();
     this.isSubmitted = true;
+
     const user: User = {
       email: this.profileFormError['email'].value,
       firstName: this.profileFormError['firstName'].value,
@@ -65,9 +83,104 @@ export class ProfileSettingsComponent implements OnInit {
       contactNo: this.profileFormError['contactNo'].value,
       address: this.profileFormError['address'].value,
     };
+
+    this.patientService.updateProfile(this.userId, user).subscribe(
+      (res: any) => {
+        console.log('res-: ', res.data);
+        this.ngxService.stop();
+        this.responseMessage = res?.message;
+        this.notificationService.showSuccess(this.responseMessage, 'SUCCESS');
+      },
+      (error) => {
+        this.ngxService.stop();
+        if (error.status === 200) {
+          this.notificationService.showSuccess(
+            'User updated successfully',
+            'SUCCESS'
+          );
+          return;
+        }
+        if (error.error?.message) {
+          this.responseMessage = error.error?.message;
+        } else {
+          this.responseMessage = this.notificationService.showError(
+            'Something went wrong',
+            'BAD REQUEST'
+          );
+        }
+        this.notificationService.showError(this.responseMessage, 'ERROR');
+      }
+    );
   }
 
-  profileSetValue() {}
+  // profileFormInit() {
+  //   this.profileForm = this.fb.group({
+  //     email: this.fb.control(this.email, Validators.required),
+  //     firstName: this.fb.control(this.firstName, Validators.required),
+  //     lastName: this.fb.control(this.lastName, Validators.required),
+  //     contactNo: this.fb.control(this.contactNo, Validators.required),
+  //     address: this.fb.control(this.address, Validators.required),
+  //   });
+  //   console.log('contact: ', this.contactNo);
+  // }
+
+  // saveProfile() {
+  //   if (this.profileForm.valid) {
+  //     let choice = confirm('Are you sure you want to update profile?');
+  //     if (choice) {
+  //       this.patientService.getSingleUser().subscribe((resID) => {
+  //         this.patientService
+  //           .updateProfile(resID.id, this.profileForm.value)
+  //           .subscribe(
+  //             (res) => {
+  //               this.notificationService.showSuccess(
+  //                 'Updated Succesfully',
+  //                 'SUCCESS'
+  //               );
+  //             },
+  //             (error: Response) => {
+  //               if (error.status === 404) {
+  //                 this.notificationService.showError(
+  //                   'Something went wrong',
+  //                   'ERROR'
+  //                 );
+  //               } else {
+  //                 this.notificationService.showError('Service Down!', 'ERROR');
+  //                 console.log(error);
+  //               }
+  //             }
+  //           );
+  //       });
+  //     }
+  //   }
+
+  // this.ngxService.start();
+  // this.isSubmitted = true;
+  // const user: User = {
+  //   email: this.profileFormError['email'].value,
+  //   firstName: this.profileFormError['firstName'].value,
+  //   lastName: this.profileFormError['lastName'].value,
+  //   contactNo: this.profileFormError['contactNo'].value,
+  //   address: this.profileFormError['address'].value,
+  // };
+  // this.patientService.updateProfile(user).subscribe(
+  //   (response: any) => {
+  //     this.ngxService.stop();
+  //     this.responseMessage = response?.message;
+  //     this.notificationService.showSuccess(
+  //       'Profile Updated successfully',
+  //       'SUCCESS'
+  //     );
+  //   },
+  //   (error) => {
+  //     this.ngxService.stop();
+  //     this.notificationService.showSuccess('Profile Not Updated', 'FAIL');
+  //     console.log('error: ', error);
+  //   }
+  // );
+  // }
+
+  // profileSetValue() {}
 
   //errors
   get profileFormError() {
