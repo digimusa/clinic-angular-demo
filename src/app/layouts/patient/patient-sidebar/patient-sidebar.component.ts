@@ -6,6 +6,7 @@ import { UserService } from 'src/app/services/user.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { Route, Router } from '@angular/router';
 import { PatientService } from 'src/app/services/patient.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-patient-sidebar',
@@ -20,7 +21,8 @@ export class PatientSidebarComponent implements OnInit {
     private userService: UserService,
     private patientService: PatientService,
     private ngxService: NgxUiLoaderService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -32,4 +34,8 @@ export class PatientSidebarComponent implements OnInit {
   }
   firstName!: string;
   lastName!: string;
+
+  logout() {
+    this.authService.logout();
+  }
 }

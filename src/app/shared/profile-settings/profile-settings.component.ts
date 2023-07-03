@@ -6,6 +6,7 @@ import { UserService } from 'src/app/services/user.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { Route, Router } from '@angular/router';
 import { PatientService } from 'src/app/services/patient.service';
+import { Patient } from 'src/app/models/patient';
 
 @Component({
   selector: 'app-profile-settings',
@@ -17,7 +18,7 @@ export class ProfileSettingsComponent implements OnInit {
   isSubmitted: boolean = false;
   responseMessage: any;
   role: any;
-  patient!: User;
+  patient!: Patient;
   userId: any;
 
   temPatient!: User;
@@ -26,6 +27,7 @@ export class ProfileSettingsComponent implements OnInit {
   lastName!: string;
   contactNo!: string;
   address!: string;
+  bloodGroup!: string;
 
   constructor(
     private fb: FormBuilder,
@@ -38,16 +40,6 @@ export class ProfileSettingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.editProfileFormInit();
-    // this.patientService.getSingleUser().subscribe((res: User) => {
-    //   this.patient = res;
-    //   this.patient.email = res.email;
-    //   this.patient.firstName = res.firstName;
-    //   this.patient.lastName = res.lastName;
-    //   this.patient.contactNo = res.contactNo;
-    //   this.patient.address = res.address;
-    // });
-    // this.profileFormInit();
-    // }
   }
 
   editProfileFormInit() {
@@ -57,18 +49,20 @@ export class ProfileSettingsComponent implements OnInit {
       lastName: this.fb.control(this.lastName, Validators.required),
       contactNo: this.fb.control(this.contactNo, Validators.required),
       address: this.fb.control(this.address, Validators.required),
+      bloodGroup: this.fb.control(this.bloodGroup, Validators.required),
     });
     this.getLoggedInUser();
   }
 
   getLoggedInUser() {
-    this.patientService.getSingleUser().subscribe((res: User) => {
+    this.patientService.getSingleUser().subscribe((res: Patient) => {
       this.userId = res.userId;
       this.profileFormError['email'].setValue(res.email);
       this.profileFormError['firstName'].setValue(res.firstName);
       this.profileFormError['lastName'].setValue(res.lastName);
       this.profileFormError['contactNo'].setValue(res.contactNo);
       this.profileFormError['address'].setValue(res.address);
+      this.profileFormError['bloodGroup'].setValue(res.bloodGroup);
     });
   }
 
@@ -76,39 +70,40 @@ export class ProfileSettingsComponent implements OnInit {
     this.ngxService.start();
     this.isSubmitted = true;
 
-    const user: User = {
+    const patient: Patient = {
       email: this.profileFormError['email'].value,
       firstName: this.profileFormError['firstName'].value,
       lastName: this.profileFormError['lastName'].value,
       contactNo: this.profileFormError['contactNo'].value,
       address: this.profileFormError['address'].value,
+      bloodGroup: this.profileFormError['bloodGroup'].value,
     };
 
-    this.patientService.updateProfile(this.userId, user).subscribe(
+    this.patientService.updateProfile(this.userId, patient).subscribe(
       (res: any) => {
         console.log('res-: ', res.data);
         this.ngxService.stop();
         this.responseMessage = res?.message;
         this.notificationService.showSuccess(this.responseMessage, 'SUCCESS');
+        this.notificationService.showSuccess(
+          'User updated successfully',
+          'SUCCESS'
+        );
       },
       (error) => {
         this.ngxService.stop();
-        if (error.status === 200) {
+        if (error.status == 200) {
           this.notificationService.showSuccess(
             'User updated successfully',
             'SUCCESS'
           );
           return;
-        }
-        if (error.error?.message) {
-          this.responseMessage = error.error?.message;
         } else {
           this.responseMessage = this.notificationService.showError(
             'Something went wrong',
             'BAD REQUEST'
           );
         }
-        this.notificationService.showError(this.responseMessage, 'ERROR');
       }
     );
   }
